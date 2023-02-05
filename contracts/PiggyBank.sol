@@ -61,7 +61,7 @@ contract PiggyBankFactory {
 
     // This will be called by the PiggyBank contract only just before deleting the contract
     function updateDeleteState(address owner, PiggyBank piggyBank) external {
-        require(msg.sender == address(piggyBank), "caller is not a piggy bank");
+        require(PiggyBank(msg.sender) is PiggyBank, "caller is not a piggy bank");
         piggyBanks[owner][piggyBank] = true;
     }
 }
